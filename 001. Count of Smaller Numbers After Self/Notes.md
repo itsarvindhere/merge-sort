@@ -1,4 +1,3 @@
-
 # PROBLEM STATEMENT
 
 Given an integer array nums, return an integer array counts where counts[i] is the number of smaller elements to the right of nums[i].
@@ -56,9 +55,11 @@ Let's understand with an example.
 	
 	We put "2" in the sorted array and Now j became 1 and we come out of the loop.
 	
-	Since there is still "5" in left subarray, for it, we will add the count that we got so far. 
+	Since there is still "5" in left subarray, it simply means it is bigger than all elements in the right sublist.
 	
-	Do note that we are not doing = count. We are doing += count because when we come back to merge() method next time,
+	So, for this reason, for "5", the number of smaller elements is incremented by whatever length the right sublist has.
+	
+	Do note that we are not doing = len(right). We are doing += len(right) because when we come back to merge() method next time,
 	It is possible that there are more elements smaller than "5".
 	
 	Hence, after sorting, L = [(1,2), (0,5)]. 
@@ -76,7 +77,11 @@ Let's understand with an example.
 	
 	And loop will terminate since j became 1. 
 	
-	And since we still have "6" in the left subarray, for it, we will add the count we got so far at its correct index in output array.
+	And since we still have "6" in the left subarray, we do the same as we did for "5".
+	
+	That is, it is bigger than all elements in right sublist so number of elements smaller than it right now = length of right sublist. 
+	
+	So, we add this number to whatever we have already for "6".
 	
 	Hence, after sorting, R = [(3,1), (2,6)]. 
 	
@@ -109,4 +114,3 @@ Let's understand with an example.
 	And it makes sense because since "1" was smaller than "2", then "1" is also smaller than whatever element is greater than "2" in left subarray.
 	
 	And finally, the output array will become [2,1,1,0]
-	
